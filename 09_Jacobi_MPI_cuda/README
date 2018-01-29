@@ -1,0 +1,2 @@
+nvcc -arch=sm_60 poisson2d_cublas.cu -lcublas -o run
+jsrun -n1 ./set_ulimit.sh nvprof ./run

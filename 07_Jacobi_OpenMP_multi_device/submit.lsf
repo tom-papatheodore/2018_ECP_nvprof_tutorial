@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#BSUB -P STF007SUMMITDEV
+#BSUB -J omp_multiGPU
+#BSUB -o %J.out
+#BSUB -e %J.err
+#BSUB -nnodes 1
+#BSUB -W 10
+
+export OMP_NUM_THREADS=4
+
+jsrun -p1 nvprof ./run
+#jsrun -p1 nvprof -s -o omp_multiGPU.%h.%p.nvvp ./run

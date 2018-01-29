@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#BSUB -P STF007SUMMITDEV
+#BSUB -J single_GPU_naive_UM
+#BSUB -o %J.out
+#BSUB -e %J.err
+#BSUB -nnodes 1
+#BSUB -W 15
+
+jsrun -n1 ./run
+#jsrun -n1 nvprof ./run
+#jsrun -n1 nvprof -s -o single_GPU_naive_UM.%h.%p.nvvp ./run

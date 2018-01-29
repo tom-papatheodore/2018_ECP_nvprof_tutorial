@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#BSUB -P STF007SUMMITDEV
+#BSUB -J cuda_singleGPU
+#BSUB -o %J.out
+#BSUB -e %J.err
+#BSUB -nnodes 1
+#BSUB -W 15
+
+jsrun -n1 ./set_ulimit.sh nvprof ./run
+#jsrun -n1 ./set_ulimit.sh nvprof -s -o cuda_singleGPU.%h.%p.nvvp ./run

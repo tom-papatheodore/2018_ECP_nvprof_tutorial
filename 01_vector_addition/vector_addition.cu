@@ -61,15 +61,15 @@ int main()
 		}
 	}	
 
-	// Free CPU memory
-	free(A);
-	free(B);
-	free(C);
-
 	// Free GPU memory
 	cudaFree(d_A);
 	cudaFree(d_B);
 	cudaFree(d_C);
+
+  // Free CPU memory
+  free(A);
+  free(B);
+  free(C);
 
   printf("\n---------------------------\n");
 	printf("__SUCCESS__\n");

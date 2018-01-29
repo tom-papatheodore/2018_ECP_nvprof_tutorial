@@ -1,0 +1,6 @@
+run
+*.err
+*.out
+*.nvvp
+*.prof
+set_ulimit.sh
