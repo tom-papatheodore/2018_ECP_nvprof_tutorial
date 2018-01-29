@@ -4,3 +4,4 @@ run
 *.nvvp
 *.prof
 set_ulimit.sh
+*.o
