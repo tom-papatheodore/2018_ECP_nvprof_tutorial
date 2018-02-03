@@ -34,12 +34,6 @@
 #define NY 4096
 #define NX 4096
 
-/*
-real A[NY][NX];
-real Anew[NY][NX];
-real rhs[NY][NX];
-*/
-
 int main(int argc, char** argv)
 {
     int iter_max = 1000;

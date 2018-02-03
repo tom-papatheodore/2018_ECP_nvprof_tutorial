@@ -176,7 +176,7 @@ int main(int argc, char* argv[])
 		calculate_jacobi<<<blocks_in_grid, threads_per_block>>>(d_A, d_rhs, d_Anew, NX, NY, d_error);
 		cudaDeviceSynchronize();
 
-//		cublasIsamax(handle, NY*NX, d_error, 1, &max_index);
+
 		cublasIdamax(handle, NY*NX, d_error, 1, &max_index);
 		cudaMemcpy(&max_error, d_error+max_index-1, sizeof(real), cudaMemcpyDeviceToHost);
 
