@@ -1,11 +1,10 @@
 #!/bin/bash
 
-#BSUB -P STF007SUMMITDEV
+#BSUB -P TRN001
 #BSUB -J single_CPU_sepFunc
 #BSUB -o %J.out
 #BSUB -e %J.err
 #BSUB -nnodes 1
 #BSUB -W 15
 
-jsrun -n1 ./run
-#jsrun -n1 nvprof --cpu-profiling on ./run
+jsrun -n1 nvprof --cpu-profiling on ./run

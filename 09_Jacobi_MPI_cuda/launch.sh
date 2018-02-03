@@ -1,10 +1,3 @@
 #!/bin/bash
 
-#BSUB -P TRN001
-#BSUB -J mpi_multiGPU
-#BSUB -o %J.out
-#BSUB -e %J.err
-#BSUB -nnodes 1
-#BSUB -W 15
-
 jsrun -n1 -a4 -c20 ./set_ulimit.sh nvprof -s -o mpi_multiGPU.%h.%{PMIX_RANK}.nvvp ./run
