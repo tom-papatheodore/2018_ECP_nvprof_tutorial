@@ -37,56 +37,56 @@
 void set_rhs(real rhs[NY][NX]){
 
 	for (int iy = 1; iy < NY-1; iy++)
-    {
-        for( int ix = 1; ix < NX-1; ix++ )
-        {
-            const real x = -1.0 + (2.0*ix/(NX-1));
-            const real y = -1.0 + (2.0*iy/(NY-1));
-            rhs[iy][ix] = expr(-10.0*(x*x + y*y));
-        }
-    }
+	{
+		for(int ix = 1; ix < NX-1; ix++)
+		{
+			const real x = -1.0 + (2.0*ix/(NX-1));
+			const real y = -1.0 + (2.0*iy/(NY-1));
+			rhs[iy][ix] = expr(-10.0*(x*x + y*y));
+		}
+	}
 
 }
 
 void calculate_jacobi_iteration(real A[NY][NX], real Anew[NY][NX], real rhs[NY][NX], real *error){
 
 	for (int iy = 1; iy < NY-1; iy++)
-        {
-            for( int ix = 1; ix < NX-1; ix++ )
-            {
-                Anew[iy][ix] = -0.25 * (rhs[iy][ix] - ( A[iy][ix+1] + A[iy][ix-1]
-                                                       + A[iy-1][ix] + A[iy+1][ix] ));
+	{
+		for(int ix = 1; ix < NX-1; ix++)
+		{
+			Anew[iy][ix] = -0.25 * (rhs[iy][ix] - ( A[iy][ix+1] + A[iy][ix-1]
+															+ A[iy-1][ix] + A[iy+1][ix] ));
 
-                *error = fmaxr(*error, fabsr(Anew[iy][ix]-A[iy][ix]));
-            }
-        }
+			*error = fmaxr(*error, fabsr(Anew[iy][ix]-A[iy][ix]));
+		}
+	}
 
 }
 
 void Anew_to_A(real A[NY][NX], real Anew[NY][NX]){
 
 	for (int iy = 1; iy < NY-1; iy++)
-        {
-            for( int ix = 1; ix < NX-1; ix++ )
-            {
-                A[iy][ix] = Anew[iy][ix];
-            }
-        }
+	{
+		for(int ix = 1; ix < NX-1; ix++)
+		{
+			A[iy][ix] = Anew[iy][ix];
+		}
+	}
 
 }
 
 void periodic_BC(real A[NY][NX]){
 
-	for( int ix = 1; ix < NX-1; ix++ )
-        {
-                A[0][ix]      = A[(NY-2)][ix];
-                A[(NY-1)][ix] = A[1][ix];
-        }
-        for (int iy = 1; iy < NY-1; iy++)
-        {
-                A[iy][0]      = A[iy][(NX-2)];
-                A[iy][(NX-1)] = A[iy][1];
-        }
+	for(int ix = 1; ix < NX-1; ix++)
+	{
+		A[0][ix]      = A[(NY-2)][ix];
+		A[(NY-1)][ix] = A[1][ix];
+	}
+	for (int iy = 1; iy < NY-1; iy++)
+	{
+		A[iy][0]      = A[iy][(NX-2)];
+		A[iy][(NX-1)] = A[iy][1];
+	}
 
 }
 
