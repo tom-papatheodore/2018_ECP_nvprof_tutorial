@@ -66,18 +66,18 @@ int main()
 	cudaFree(d_B);
 	cudaFree(d_C);
 
-  // Free CPU memory
-  free(A);
-  free(B);
-  free(C);
+	// Free CPU memory
+	free(A);
+	free(B);
+	free(C);
 
-  printf("\n---------------------------\n");
+	printf("\n---------------------------\n");
 	printf("__SUCCESS__\n");
 	printf("---------------------------\n");
 	printf("N                 = %d\n", N);
 	printf("Threads Per Block = %d\n", thr_per_blk);
 	printf("Blocks In Grid    = %d\n", blk_in_grid);
-  printf("---------------------------\n\n");
+	printf("---------------------------\n\n");
 
 	return 0;
 }
